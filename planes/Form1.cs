@@ -100,42 +100,9 @@ namespace planes
             return (new Random()).Next(1000);
         }
     }
+    
 
-    public interface IPoint
-    {
-     //   public IPoint(double aX, double aY);
-        public int X {get;}
-        public int Y {get;}
-    }
 
-    public interface IGameMechanics
-    {
-        void addPlane();
-        void drawObjects(Graphics g);
-        void nextTurn();
-        void changePlaneParams(System.Drawing.Point point, decimal aSpeed, decimal aDegree);
-    }
-
-    public class GameMechanics : IGameMechanics
-    {
-        public void addPlane()
-        {
-
-        }
-        public void drawObjects(Graphics g)
-        {
-
-        }
-        public void nextTurn()
-        {
-
-        }
-
-        public void changePlaneParams(System.Drawing.Point point, decimal aSpeed, decimal aDegree)
-        {
-
-        }
-    }    
 }
 
 /*

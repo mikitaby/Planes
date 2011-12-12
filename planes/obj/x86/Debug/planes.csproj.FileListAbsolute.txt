@@ -26,3 +26,13 @@ E:\planes\planes\obj\x86\Debug\planes.GUI.resources
 E:\planes\planes\obj\x86\Debug\planes.Properties.Resources.resources
 E:\planes\planes\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\planes\planes\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\#Git\Planes\planes\obj\x86\Debug\planes.exe
+D:\#Git\Planes\planes\obj\x86\Debug\planes.pdb
+D:\#Git\Planes\planes\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\#Git\Planes\planes\obj\x86\Debug\planes.Form1.resources
+D:\#Git\Planes\planes\obj\x86\Debug\planes.GUI.resources
+D:\#Git\Planes\planes\obj\x86\Debug\planes.Properties.Resources.resources
+D:\#Git\Planes\planes\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\#Git\Planes\planes\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\#Git\Planes\planes\bin\Debug\planes.exe
+D:\#Git\Planes\planes\bin\Debug\planes.pdb

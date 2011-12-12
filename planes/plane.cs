@@ -63,7 +63,7 @@ namespace planes
 
         Course course;
         
-        public Point CurrentLocation
+        public MyPoint CurrentLocation
         {
             get
             {
@@ -76,7 +76,7 @@ namespace planes
             this.course.nextTurn(speed, degree);
         }        
 
-        public Plane(double aSpeed, double aDegree, Point aStartPoint, string aName)
+        public Plane(double aSpeed, double aDegree, MyPoint aStartPoint, string aName)
         {
             this.onTheFly = true;
             this.speed = aSpeed;

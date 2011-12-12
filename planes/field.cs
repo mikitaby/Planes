@@ -7,7 +7,7 @@ namespace planes
     class Field : IDrawObject, IPlaneCollection
     {
         public List<Plane> all_planes;
-        List<Point> all_airfields;
+        List<MyPoint> all_airfields;
 
         public void Draw(Graphics g)
         {
@@ -30,16 +30,16 @@ namespace planes
         public Field() 
         {
             all_planes = new List<Plane>();
-            all_airfields = new List<Point>();
+            all_airfields = new List<MyPoint>();
             
-            all_airfields.Add(new Point(10, 10));
+            all_airfields.Add(new MyPoint(10, 10));
         }
         
         public void addPlane()
         {            
             all_planes.Add(new Plane(RandomsValues.getRandomSpeed(),
                                      RandomsValues.getRandomDegree(),
-                                     new Point(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()),
+                                     new MyPoint(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()),
                                      RandomsValues.getRandomName()));
         }
 
@@ -53,7 +53,7 @@ namespace planes
         {
             foreach (Plane plane in all_planes)
                 if (plane.OnTheFly)
-                    foreach (Point airfield in all_airfields)                
+                    foreach (MyPoint airfield in all_airfields)                
                         if (plane.CurrentLocation == airfield)
                             plane.Landing();
         }       

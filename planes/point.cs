@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace planes
 {
-    public class Point
+    public class MyPoint
     {
         private int x;
         private int y;
 
-        public Point(double aX, double aY)
+        public MyPoint(double aX, double aY)
         {
             this.x = (int)Math.Round(aX);
             this.y = (int)Math.Round(aY);
@@ -37,7 +37,7 @@ namespace planes
 
         public override bool Equals(Object obj)
         {
-            return obj is Point && this == (Point)obj;
+            return obj is MyPoint && this == (MyPoint)obj;
         }
 
         public override int GetHashCode()
@@ -45,12 +45,12 @@ namespace planes
             return x.GetHashCode() ^ y.GetHashCode();
         }
 
-        public static bool operator ==(Point x, Point y)
+        public static bool operator ==(MyPoint x, MyPoint y)
         {         
             return x.x == y.x && x.y == y.y;            
         }
 
-        public static bool operator !=(Point x, Point y)
+        public static bool operator !=(MyPoint x, MyPoint y)
         {
             return !(x == y);
         }
