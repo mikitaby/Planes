@@ -9,21 +9,16 @@ namespace planes
         double degree;
         bool onTheFly;
         string name;
+        Course course;
 
         public string Name 
         {
-            get
-            {
-                return this.name;
-            }
+            get {return this.name;}
         }
 
         public bool OnTheFly
         {
-            get 
-            {
-                return this.onTheFly;
-            }
+            get {return this.onTheFly;}
         }
 
         public void Landing()
@@ -59,16 +54,11 @@ namespace planes
                 else
                     throw new Exception("incorrect speed value" + value);
             }
-        }
-
-        Course course;
+        }        
         
         public MyPoint CurrentLocation
         {
-            get
-            {
-                return this.course.getLocation();
-            }
+            get {return this.course.getLocation();}
         }
 
         public void nextTurn() 

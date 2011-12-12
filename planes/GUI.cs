@@ -11,8 +11,8 @@ namespace planes
 {
     public partial class GUI : Form
     {
-        IGameMechanics gameMechanics;
-        Point userSelectedPoint;
+        private IGameMechanics gameMechanics;
+        
         const decimal SPEED = 1;
         const decimal DEGREE = 1;
 
@@ -40,15 +40,18 @@ namespace planes
         }
 
         private void btnChangePlaneParams_Click(object sender, EventArgs e)
-        {
-            
-            if (!userSelectedPoint.IsEmpty)
-                gameMechanics.changePlaneParams(userSelectedPoint, SPEED, DEGREE);
+        {            
+            if (gameMechanics.isObjectSelected())
+                gameMechanics.changeSelectedObjectParams(SPEED, DEGREE);
         }
 
         private void pbFlyField_MouseClick(object sender, MouseEventArgs e)
         {
-            userSelectedPoint = e.Location;           
+            gameMechanics.selectObject(e.Location);
+            
+            if (gameMechanics.isObjectSelected())
+                using (Graphics graphics = pbFlyField.CreateGraphics())
+                    gameMechanics.repaintSelectedObject(graphics);
         }        
     }
 }
