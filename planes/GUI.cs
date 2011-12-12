@@ -12,9 +12,6 @@ namespace planes
     public partial class GUI : Form
     {
         private IGameMechanics gameMechanics;
-        
-        const decimal SPEED = 1;
-        const decimal DEGREE = 1;
 
         public GUI()
         {
@@ -42,7 +39,7 @@ namespace planes
         private void btnChangePlaneParams_Click(object sender, EventArgs e)
         {            
             if (gameMechanics.isObjectSelected())
-                gameMechanics.changeSelectedObjectParams(SPEED, DEGREE);
+                gameMechanics.changeSelectedObjectParams(getNewSpeed(), getNewDegree());
         }
 
         private void pbFlyField_MouseClick(object sender, MouseEventArgs e)
@@ -52,6 +49,18 @@ namespace planes
             if (gameMechanics.isObjectSelected())
                 using (Graphics graphics = pbFlyField.CreateGraphics())
                     gameMechanics.repaintSelectedObject(graphics);
-        }        
+        }
+
+        double getNewSpeed() 
+        {
+            MessageBox.Show("Speed increase 1.5");
+            return 1.5;                
+        }
+        
+        double getNewDegree() 
+        {
+            MessageBox.Show("Degree increase 1.5");
+            return 1.5;                
+        }
     }
 }

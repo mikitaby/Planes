@@ -66,13 +66,13 @@ namespace planes
             this.course.nextTurn(speed, degree);
         }        
 
-        public Plane(double aSpeed, double aDegree, MyPoint aStartPoint, string aName)
+        public Plane()
         {
             this.onTheFly = true;
-            this.speed = aSpeed;
-            this.degree = aDegree;
-            this.name = aName;
-            this.course = new Course(aStartPoint);
+            this.speed = RandomsValues.getRandomSpeed();
+            this.degree = RandomsValues.getRandomDegree();
+            this.name = RandomsValues.getRandomName();
+            this.course = new Course(new MyPoint(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()));
         }      
     }
 }

@@ -9,40 +9,78 @@ namespace planes
 {
     public class GameMechanics : IGameMechanics
     {
+        private List<Plane> all_planes;
+        private Plane selectedPlane;
+        private const int selectedQUAD = 10;
+
+        public GameMechanics()
+        {
+            all_planes = new List<Plane>();
+            selectedPlane = null;
+        }        
+        
         public void addPlane()
         {
-            MessageBox.Show("Add Plane");
-        }
-
-        public void drawObjects(Graphics g)
-        {
-            MessageBox.Show("Draw objects");
+            all_planes.Add(new Plane());
         }
 
         public void nextTurn()
         {
-            MessageBox.Show("Next Turn");
+            foreach (Plane plane in all_planes)
+                plane.nextTurn();
+        }
+        
+        public void selectObject(Point point)
+        {
+            selectedPlane = null;
+            foreach (Plane plane in all_planes)
+                if (plane.CurrentLocation.X - selectedQUAD < point.X
+                    && plane.CurrentLocation.X + selectedQUAD > point.X
+                    && plane.CurrentLocation.Y - selectedQUAD < point.Y
+                    && plane.CurrentLocation.Y + selectedQUAD > point.Y)
+                { 
+                    selectedPlane = plane;
+                    MessageBox.Show("Selected!");
+                }
+            //problem: selected last plane in 10x10 quad!
         }
 
         public bool isObjectSelected() 
+        {            
+            return (selectedPlane != null);
+        }
+        
+        public void changeSelectedObjectParams(double aSpeed, double aDegree)
         {
-            MessageBox.Show("Is object selected");
-            return true;            
+            selectedPlane.Speed = aSpeed;
+            selectedPlane.Degree = aDegree;
         }
 
-        public void selectObject(Point point) 
+        public void drawObjects(Graphics g)
         {
-            MessageBox.Show("Try to select object");
-        }
-
-        public void changeSelectedObjectParams(decimal aSpeed, decimal aDegree)
-        {
-            MessageBox.Show("Change object params");
+            foreach (Plane plane in all_planes)
+                if (plane.OnTheFly)
+                {
+                    g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(plane.CurrentLocation.X, plane.CurrentLocation.Y, 4, 4));
+                    //g.DrawLine(); - direction
+                }
         }
 
         public void repaintSelectedObject(Graphics g)
         {
-            MessageBox.Show("RepaintSelectedObject");
+            if (selectedPlane.OnTheFly)
+            {
+                Point p1 = new Point(selectedPlane.CurrentLocation.X - selectedQUAD, selectedPlane.CurrentLocation.Y - selectedQUAD);
+                Point p2 = new Point(selectedPlane.CurrentLocation.X - selectedQUAD, selectedPlane.CurrentLocation.Y + selectedQUAD);
+                Point p3 = new Point(selectedPlane.CurrentLocation.X + selectedQUAD, selectedPlane.CurrentLocation.Y + selectedQUAD);
+                Point p4 = new Point(selectedPlane.CurrentLocation.X + selectedQUAD, selectedPlane.CurrentLocation.Y - selectedQUAD);
+                
+                Point[] points = new Point[5] { p1, p2, p3, p4, p1 };
+                
+                g.DrawLines(new Pen(new SolidBrush(Color.Red)),points);
+                
+                //g.DrawLine(); - direction
+            }
         }        
     }
 }

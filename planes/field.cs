@@ -37,10 +37,7 @@ namespace planes
         
         public void addPlane()
         {            
-            all_planes.Add(new Plane(RandomsValues.getRandomSpeed(),
-                                     RandomsValues.getRandomDegree(),
-                                     new MyPoint(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()),
-                                     RandomsValues.getRandomName()));
+            all_planes.Add(new Plane());
         }
 
         public void nextTurn() 
