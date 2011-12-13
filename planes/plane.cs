@@ -77,8 +77,13 @@ namespace planes
 
         public void Draw(Graphics g) 
         {
-            Point point = new Point(CurrentLocation.X, CurrentLocation.Y);
-            g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(point, new Size(4,4)));
+            foreach(Point passedPoint in course.getTrace())
+            {
+                g.FillRectangle(new SolidBrush(Color.Green), new Rectangle(passedPoint, new Size(2, 2)));
+            }
+            
+            Point locationPoint = new Point(CurrentLocation.X, CurrentLocation.Y);
+            g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(locationPoint, new Size(4, 4)));
         }
 
         public void selectedDraw(Graphics g)

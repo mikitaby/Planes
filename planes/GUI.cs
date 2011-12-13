@@ -22,15 +22,7 @@ namespace planes
         {
             gameMechanics.addPlane();
         }
-
-        private void btnTurn_Click(object sender, EventArgs e)
-        {
-            gameMechanics.nextTurn();
-
-            using (Graphics graphics = pbFlyField.CreateGraphics()) 
-                gameMechanics.drawObjects(graphics);
-        }
-
+        
         private void btnChangePlaneParams_Click(object sender, EventArgs e)
         {            
             if (gameMechanics.isObjectSelected())
@@ -54,6 +46,33 @@ namespace planes
         double getNewDegree() 
         {
             return RandomsValues.getRandomDegree();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (Graphics graphics = pbFlyField.CreateGraphics())
+            {
+                MessageBox.Show(graphics.DpiX.ToString() + ":" + graphics.DpiY.ToString());
+                graphics.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(96, 96, 10, 10));
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            gameMechanics.nextTurn();
+
+            using (Graphics graphics = pbFlyField.CreateGraphics())
+                gameMechanics.drawObjects(graphics);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

@@ -55,7 +55,8 @@ namespace planes
         }
 
         public void drawObjects(Graphics g)
-        {
+        {            
+            g.Clear(Color.Gray);
             foreach (Plane plane in all_planes)
                 if (plane.OnTheFly)
                     plane.Draw(g);                

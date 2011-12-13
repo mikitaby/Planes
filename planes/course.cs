@@ -20,6 +20,11 @@ namespace planes
             return course.ElementAt(course.Count - 1);
         }
 
+        public List<Point> getTrace()
+        {
+            return course;
+        }
+
         public void nextTurn(double aSpeed, double aDegree)
         {
             Point oldPoint = getLocation();
