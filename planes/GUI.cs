@@ -51,9 +51,16 @@ namespace planes
         private void button1_Click(object sender, EventArgs e)
         {
             using (Graphics graphics = pbFlyField.CreateGraphics())
-            {
-                MessageBox.Show(graphics.DpiX.ToString() + ":" + graphics.DpiY.ToString());
-                graphics.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(96, 96, 10, 10));
+            {   
+                //graphics.FillRectangle(new SolidBrush(Color.White), new Rectangle(96, 96, 10, 10));
+                graphics.Clear(Color.Gray);
+                
+                //graphics.FillEllipse(new SolidBrush(Color.Green), new Rectangle(96-10, 96+10, 2*10, 2*10));
+
+                graphics.FillRectangle(new SolidBrush(Color.Yellow), new Rectangle(96 - 10, 96 - 10, 2 * 10, 2 * 10));
+                graphics.FillRectangle(new SolidBrush(Color.Black), new Rectangle(96, 96, 1, 1));
+
+                
             }
         }
 
@@ -66,8 +73,6 @@ namespace planes
 
             using (Graphics graphics = pbFlyField.CreateGraphics())
                 gameMechanics.drawObjects(graphics);
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)

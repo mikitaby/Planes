@@ -78,29 +78,15 @@ namespace planes
         public void Draw(Graphics g) 
         {
             foreach(Point passedPoint in course.getTrace())
-            {
-                g.FillRectangle(new SolidBrush(Color.Green), new Rectangle(passedPoint, new Size(2, 2)));
-            }
+                g.FillRectangle(new SolidBrush(Color.Green), passedPoint.X - 1, passedPoint.Y - 1, 2, 2);
             
-            Point locationPoint = new Point(CurrentLocation.X, CurrentLocation.Y);
-            g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(locationPoint, new Size(4, 4)));
+            g.FillRectangle(new SolidBrush(Color.Blue), CurrentLocation.X - 2, CurrentLocation.Y - 2, 4, 4);            
         }
 
         public void selectedDraw(Graphics g)
         {
             const int selectedQUAD = 10;
-
-            int x = CurrentLocation.X;
-            int y = CurrentLocation.Y;
-
-            Point p1 = new Point(x - selectedQUAD, y - selectedQUAD);
-            Point p2 = new Point(x - selectedQUAD, y + selectedQUAD);
-            Point p3 = new Point(x + selectedQUAD, y + selectedQUAD);
-            Point p4 = new Point(x + selectedQUAD, y - selectedQUAD);
-
-            Point[] points = new Point[5] { p1, p2, p3, p4, p1 };
-
-            g.DrawLines(new Pen(new SolidBrush(Color.Red)), points);
+            g.DrawEllipse(new Pen(new SolidBrush(Color.Red)), CurrentLocation.X - selectedQUAD, CurrentLocation.Y - selectedQUAD, 2*selectedQUAD, 2*selectedQUAD);
         }
     }
 }

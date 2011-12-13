@@ -34,17 +34,16 @@ namespace planes
         
         public void selectObject(Point point)
         {
+            Rectangle region = new Rectangle(point.X - selectedQUAD, point.Y - selectedQUAD, 2 * selectedQUAD, 2 * selectedQUAD);
+            
             selectedPlane = null;
             foreach (Plane plane in all_planes)
-                if (plane.CurrentLocation.X - selectedQUAD < point.X
-                    && plane.CurrentLocation.X + selectedQUAD > point.X
-                    && plane.CurrentLocation.Y - selectedQUAD < point.Y
-                    && plane.CurrentLocation.Y + selectedQUAD > point.Y)
+                if (region.Contains(plane.CurrentLocation))
                 { 
                     selectedPlane = plane;
                     MessageBox.Show("Selected!");
                 }
-            //problem: selected last plane in 10x10 quad!
+            //problem: selected last plane in selectedQUAD x selectedQUAD quad!
         }
 
         public bool isObjectSelected() 
@@ -81,8 +80,7 @@ namespace planes
         }
 
         public void checkCrashes()
-        {
-            
+        {            
             foreach (Plane plane_one in all_planes)
                 foreach (Plane plane_two in all_planes)
                     if ((plane_one != plane_two) && (plane_one.CurrentLocation == plane_two.CurrentLocation))
