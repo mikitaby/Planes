@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="course.cs" />
     <Compile Include="GameMechanics.cs" />
+    <Compile Include="GroundObject.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>

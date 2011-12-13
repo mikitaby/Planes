@@ -6,14 +6,18 @@ namespace planes
 {
     public class GameMechanics : IGameMechanics
     {
+        
         const int selectedQUAD = 10;
 
         private List<Plane> all_planes;
         private Plane selectedPlane;
-        
+        IGroundObject airPort;
+
         public GameMechanics()
         {
             all_planes = new List<Plane>();
+            airPort = new GroundObject(); 
+
             selectedPlane = null;
         }        
         
@@ -59,33 +63,27 @@ namespace planes
             g.Clear(Color.Gray);
             foreach (Plane plane in all_planes)
                 if (plane.OnTheFly)
-                    plane.Draw(g);                
+                    plane.Draw(g);
+            airPort.Draw(g);    //может быть стоит рисовать только один раз?
         }
 
         public void repaintSelectedObject(Graphics g)
         {
             if (selectedPlane.OnTheFly)
                 selectedPlane.selectedDraw(g);            
-        }        
+        }
+
+        public void checkLanding()
+        {
+            foreach (Plane plane in all_planes)
+                if (plane.OnTheFly && airPort.IsObjectNear(plane.CurrentLocation))
+                    plane.Landing();
+        }
     }
 }
 
 
 /*     
-               List<Point> all_airfields;                
-
-               all_airfields = new List<Point>();
-               all_airfields.Add(new Point(10, 10));
-   
-               public void checkLanding()
-               {
-                   foreach (Plane plane in all_planes)
-                       if (plane.OnTheFly)
-                           foreach (Point airfield in all_airfields)                
-                               if (plane.CurrentLocation == airfield)
-                                   plane.Landing();
-               }
-
                private void checkCrashes()
                {
                    foreach (Plane plane_one in all_planes)
