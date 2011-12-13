@@ -11,7 +11,7 @@ namespace planes
 
         public static double getRandomDegree()
         {
-            return (new Random()).NextDouble() + (new Random()).Next(5);
+            return (new Random()).Next(359);
         }
 
         public static string getRandomName()

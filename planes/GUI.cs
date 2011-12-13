@@ -61,8 +61,13 @@ namespace planes
         {
             gameMechanics.nextTurn();
 
+            gameMechanics.checkLanding();
+            gameMechanics.checkCrashes();
+
             using (Graphics graphics = pbFlyField.CreateGraphics())
                 gameMechanics.drawObjects(graphics);
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -79,19 +79,17 @@ namespace planes
                 if (plane.OnTheFly && airPort.IsObjectNear(plane.CurrentLocation))
                     plane.Landing();
         }
+
+        public void checkCrashes()
+        {
+            
+            foreach (Plane plane_one in all_planes)
+                foreach (Plane plane_two in all_planes)
+                    if ((plane_one != plane_two) && (plane_one.CurrentLocation == plane_two.CurrentLocation))
+                    {
+                        MessageBox.Show("crash!");
+                        break;
+                    }            
+        }
     }
 }
-
-
-/*     
-               private void checkCrashes()
-               {
-                   foreach (Plane plane_one in all_planes)
-                       foreach (Plane plane_two in all_planes.Except(plane_one))
-                           if (plane_one.CurrentLocation == plane_two.CurrentLocation)
-                           {
-                               MessageBox.Show("crash!");
-                               break;
-                           }
-               }
-*/

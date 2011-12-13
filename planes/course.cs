@@ -29,8 +29,8 @@ namespace planes
         {
             Point oldPoint = getLocation();
 
-            int newX = (int)Math.Round(oldPoint.X + Math.Cos(aDegree) * aSpeed);
-            int newY = (int)Math.Round(oldPoint.Y + Math.Sin(aDegree) * aSpeed);
+            int newX = (int)Math.Round(oldPoint.X + Math.Cos(Math.PI * aDegree / 180) * aSpeed);
+            int newY = (int)Math.Round(oldPoint.Y + Math.Sin(Math.PI * aDegree / 180) * aSpeed);
 
             course.Add(new Point(newX, newY));
         }

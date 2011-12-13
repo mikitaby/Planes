@@ -32,7 +32,7 @@ namespace planes
         {
             set
             {
-                if ((value >= 0) && (value < 2*Math.PI))
+                if ((value >= 0) && (value < 360))
                 {
                     degree = value;
                     MessageBox.Show("Plane " + name + " new degree: " + degree.ToString());
