@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,10 +6,11 @@ namespace planes
 {
     public class GameMechanics : IGameMechanics
     {
+        const int selectedQUAD = 10;
+
         private List<Plane> all_planes;
         private Plane selectedPlane;
-        private const int selectedQUAD = 10;
-
+        
         public GameMechanics()
         {
             all_planes = new List<Plane>();
@@ -60,27 +58,41 @@ namespace planes
         {
             foreach (Plane plane in all_planes)
                 if (plane.OnTheFly)
-                {
-                    g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(plane.CurrentLocation.X, plane.CurrentLocation.Y, 4, 4));
-                    //g.DrawLine(); - direction
-                }
+                    plane.Draw(g);                
         }
 
         public void repaintSelectedObject(Graphics g)
         {
             if (selectedPlane.OnTheFly)
-            {
-                Point p1 = new Point(selectedPlane.CurrentLocation.X - selectedQUAD, selectedPlane.CurrentLocation.Y - selectedQUAD);
-                Point p2 = new Point(selectedPlane.CurrentLocation.X - selectedQUAD, selectedPlane.CurrentLocation.Y + selectedQUAD);
-                Point p3 = new Point(selectedPlane.CurrentLocation.X + selectedQUAD, selectedPlane.CurrentLocation.Y + selectedQUAD);
-                Point p4 = new Point(selectedPlane.CurrentLocation.X + selectedQUAD, selectedPlane.CurrentLocation.Y - selectedQUAD);
-                
-                Point[] points = new Point[5] { p1, p2, p3, p4, p1 };
-                
-                g.DrawLines(new Pen(new SolidBrush(Color.Red)),points);
-                
-                //g.DrawLine(); - direction
-            }
+                selectedPlane.selectedDraw(g);            
         }        
     }
 }
+
+
+/*     
+               List<Point> all_airfields;                
+
+               all_airfields = new List<Point>();
+               all_airfields.Add(new Point(10, 10));
+   
+               public void checkLanding()
+               {
+                   foreach (Plane plane in all_planes)
+                       if (plane.OnTheFly)
+                           foreach (Point airfield in all_airfields)                
+                               if (plane.CurrentLocation == airfield)
+                                   plane.Landing();
+               }
+
+               private void checkCrashes()
+               {
+                   foreach (Plane plane_one in all_planes)
+                       foreach (Plane plane_two in all_planes.Except(plane_one))
+                           if (plane_one.CurrentLocation == plane_two.CurrentLocation)
+                           {
+                               MessageBox.Show("crash!");
+                               break;
+                           }
+               }
+*/

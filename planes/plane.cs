@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace planes
@@ -44,8 +45,7 @@ namespace planes
         public double Speed
         {
             set
-            {
-                
+            {                
                 if (value > 0)
                 {
                     speed = value;
@@ -56,7 +56,7 @@ namespace planes
             }
         }        
         
-        public MyPoint CurrentLocation
+        public Point CurrentLocation
         {
             get {return this.course.getLocation();}
         }
@@ -72,7 +72,30 @@ namespace planes
             this.speed = RandomsValues.getRandomSpeed();
             this.degree = RandomsValues.getRandomDegree();
             this.name = RandomsValues.getRandomName();
-            this.course = new Course(new MyPoint(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()));
-        }      
+            this.course = new Course(new Point(RandomsValues.getRandomStartCoordinate(), RandomsValues.getRandomStartCoordinate()));
+        }
+
+        public void Draw(Graphics g) 
+        {
+            Point point = new Point(CurrentLocation.X, CurrentLocation.Y);
+            g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(point, new Size(4,4)));
+        }
+
+        public void selectedDraw(Graphics g)
+        {
+            const int selectedQUAD = 10;
+
+            int x = CurrentLocation.X;
+            int y = CurrentLocation.Y;
+
+            Point p1 = new Point(x - selectedQUAD, y - selectedQUAD);
+            Point p2 = new Point(x - selectedQUAD, y + selectedQUAD);
+            Point p3 = new Point(x + selectedQUAD, y + selectedQUAD);
+            Point p4 = new Point(x + selectedQUAD, y - selectedQUAD);
+
+            Point[] points = new Point[5] { p1, p2, p3, p4, p1 };
+
+            g.DrawLines(new Pen(new SolidBrush(Color.Red)), points);
+        }
     }
 }

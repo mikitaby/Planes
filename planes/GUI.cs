@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace planes
@@ -53,14 +48,12 @@ namespace planes
 
         double getNewSpeed() 
         {
-            MessageBox.Show("Speed increase 1.5");
-            return 1.5;                
+            return RandomsValues.getRandomSpeed();
         }
         
         double getNewDegree() 
         {
-            MessageBox.Show("Degree increase 1.5");
-            return 1.5;                
+            return RandomsValues.getRandomDegree();
         }
     }
 }

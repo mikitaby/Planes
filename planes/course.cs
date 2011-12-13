@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace planes
 {
     class Course
     {
-        private List<MyPoint> course;
+        private List<Point> course;
 
-        public Course(MyPoint aStartPoint) 
+        public Course(Point aStartPoint)
         {
-            course = new List<MyPoint>();
+            course = new List<Point>();
             course.Add(aStartPoint);
         }
 
-        public MyPoint getLocation()
+        public Point getLocation()
         {
             return course.ElementAt(course.Count - 1);
         }
 
         public void nextTurn(double aSpeed, double aDegree)
         {
-            MyPoint oldPoint = getLocation();
-                       
-            double newX = oldPoint.X + Math.Cos(aDegree) * aSpeed;
-            double newY = oldPoint.Y + Math.Sin(aDegree) * aSpeed;
-                        
-            course.Add(new MyPoint(newX, newY));            
+            Point oldPoint = getLocation();
+
+            int newX = (int)Math.Round(oldPoint.X + Math.Cos(aDegree) * aSpeed);
+            int newY = (int)Math.Round(oldPoint.Y + Math.Sin(aDegree) * aSpeed);
+
+            course.Add(new Point(newX, newY));
         }
     }
 }
