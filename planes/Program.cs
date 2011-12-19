@@ -13,9 +13,16 @@ namespace planes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-         
+            
+            MessageBox.Show(RadianToDegree.ToDegree(57).ToString());
+            MessageBox.Show(RadianToDegree.ToDegree(-1.1).ToString());
+            MessageBox.Show(RadianToDegree.ToDegree(21.1).ToString());
+
+            RandomParams randomParams = new RandomParams();
+            
             GUI fmGUI = new GUI();
             fmGUI.GameMechanics = new GameMechanics(); 
+
             Application.Run(fmGUI);   
         }
     }

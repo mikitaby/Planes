@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System;
 
 namespace planes
 {
@@ -50,11 +51,26 @@ namespace planes
         {            
             return (selectedPlane != null);
         }
-        
-        public void changeSelectedObjectParams(double aSpeed, double aDegree)
-        {
-            selectedPlane.Speed = aSpeed;
-            selectedPlane.Degree = aDegree;
+
+        public void changeSelectedObjectParams(Point pointTo)
+        {            
+            
+            int sideX = pointTo.X - selectedPlane.CurrentLocation.X;
+            int sideY = pointTo.Y - selectedPlane.CurrentLocation.Y;
+
+            double newDegree = 0;
+            if (sideX != 0)
+                newDegree = Math.Atan(sideY / sideX) * 180 / Math.PI;
+            else
+            {
+                if (sideY > 0)
+                    newDegree = 90;
+                else
+                    newDegree = -90;
+            }   
+
+            selectedPlane.Speed = Math.Sqrt(sideX * sideX + sideY * sideY)/100;
+            selectedPlane.Degree = newDegree;
         }
 
         public void drawObjects(Graphics g)

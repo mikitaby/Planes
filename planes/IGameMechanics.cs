@@ -9,7 +9,7 @@ namespace planes
         void nextTurn();
         bool isObjectSelected();
         void selectObject(Point point);
-        void changeSelectedObjectParams(double aSpeed, double aDegree);
+        void changeSelectedObjectParams(Point pointTo);
         void repaintSelectedObject(Graphics g);
         void checkLanding();
         void checkCrashes();        

@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.pbFlyField = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnChangePlaneParams = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,6 +45,7 @@
             this.pbFlyField.TabIndex = 0;
             this.pbFlyField.TabStop = false;
             this.pbFlyField.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbFlyField_MouseClick);
+            this.pbFlyField.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbFlyField_MouseDoubleClick);
             // 
             // btnAdd
             // 
@@ -57,26 +56,6 @@
             this.btnAdd.Text = "Add Plane";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnChangePlaneParams
-            // 
-            this.btnChangePlaneParams.Location = new System.Drawing.Point(529, 505);
-            this.btnChangePlaneParams.Name = "btnChangePlaneParams";
-            this.btnChangePlaneParams.Size = new System.Drawing.Size(155, 23);
-            this.btnChangePlaneParams.TabIndex = 3;
-            this.btnChangePlaneParams.Text = "changePlaneParams";
-            this.btnChangePlaneParams.UseVisualStyleBackColor = true;
-            this.btnChangePlaneParams.Click += new System.EventHandler(this.btnChangePlaneParams_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(821, 505);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
@@ -110,8 +89,6 @@
             this.ClientSize = new System.Drawing.Size(927, 540);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnChangePlaneParams);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pbFlyField);
             this.Name = "GUI";
@@ -125,8 +102,6 @@
 
         private System.Windows.Forms.PictureBox pbFlyField;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnChangePlaneParams;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
