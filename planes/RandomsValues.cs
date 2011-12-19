@@ -45,7 +45,7 @@ namespace planes
 
         public double getRandomDegree()
         {
-            return random.Next(359);
+            return random.Next(1000);
         }
 
         public string getRandomName()

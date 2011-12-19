@@ -60,13 +60,13 @@ namespace planes
 
             double newDegree = 0;
             if (sideX != 0)
-                newDegree = Math.Atan(sideY / sideX) * 180 / Math.PI;
+                newDegree = Math.Atan(sideY / sideX);
             else
             {
                 if (sideY > 0)
-                    newDegree = 90;
+                    newDegree = Math.PI / 2;
                 else
-                    newDegree = -90;
+                    newDegree = 3 * Math.PI / 2;
             }   
 
             selectedPlane.Speed = Math.Sqrt(sideX * sideX + sideY * sideY)/100;

@@ -32,13 +32,11 @@ namespace planes
         {
             set
             {
-                if ((value >= 0) && (value < 360))
-                {
-                    degree = value;
-                    MessageBox.Show("Plane " + name + " new degree: " + degree.ToString());
-                }
-                else
-                    throw new Exception("incorrect degree value" + value);
+                degree = value % (2 * Math.PI);//normirovvannoe kol-vo radian
+                if (degree < 0)
+                    degree += 2 * Math.PI;
+
+                MessageBox.Show("Plane " + name + " new degree: " + RadianToDegree.ToDegree(degree).ToString());                
             }
         }
 

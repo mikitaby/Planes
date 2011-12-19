@@ -7,9 +7,9 @@ namespace planes
 {
     public static class RadianToDegree
     {
-        public static int ToDegree(double radian) 
+        public static int ToDegree(double normalisedRadian) //[0:2*pi)
         {
-            return (int)Math.Round((radian % (2*Math.PI)) * 180 / Math.PI, 0);            
+            return (int)(normalisedRadian * 180 / Math.PI);
         }
     }
 }

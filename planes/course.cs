@@ -25,12 +25,12 @@ namespace planes
             return course;
         }
 
-        public void nextTurn(double aSpeed, double aDegree)
+        public void nextTurn(double aSpeed, double aRadianDegree)
         {
             Point oldPoint = getLocation();
 
-            int newX = (int)Math.Round(oldPoint.X + Math.Cos(Math.PI * aDegree / 180) * aSpeed);
-            int newY = (int)Math.Round(oldPoint.Y + Math.Sin(Math.PI * aDegree / 180) * aSpeed);
+            int newX = (int)Math.Round(oldPoint.X + Math.Cos(aRadianDegree) * aSpeed);
+            int newY = (int)Math.Round(oldPoint.Y + Math.Sin(aRadianDegree) * aSpeed);
 
             course.Add(new Point(newX, newY));
         }
